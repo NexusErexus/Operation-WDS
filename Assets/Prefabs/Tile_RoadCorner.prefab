@@ -60,9 +60,13 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 299166cc9328e484ba27f7c6c60bcc79, type: 2}
+    - target: {fileID: 5130086482519081338, guid: 8e23eba7fe720294b9e89a04190fac9f, type: 3}
+      propertyPath: isCLickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6558913069338443413, guid: 8e23eba7fe720294b9e89a04190fac9f, type: 3}
       propertyPath: m_Name
-      value: Tile_RoadCorner90
+      value: Tile_RoadCorner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
