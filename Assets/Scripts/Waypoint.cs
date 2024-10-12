@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 public class Waypoint : MonoBehaviour
 {
     [SerializeField] bool isPlaceable;
+    [SerializeField] GameObject turretPrefab;
+    GameObject destroyTurret;
     public InputActionReference mouseClickAction;
-    //CoordinateLabel coordinateLabel = new CoordinateLabel();
 
     private void OnEnable()
     {
@@ -30,8 +31,16 @@ public class Waypoint : MonoBehaviour
         {
             if (hit.transform == transform && isPlaceable)
             {
-                Debug.Log(transform.name);
+                Vector3 correctPosition = transform.position + new Vector3(0, 0.25f, 0);
+                destroyTurret = Instantiate(turretPrefab, correctPosition, Quaternion.identity);
+                isPlaceable = false;
             }
+            else if (hit.transform == transform && !isPlaceable)
+            {
+                Destroy(destroyTurret);
+                isPlaceable = true;
+            }
+            
         }
         
     }
