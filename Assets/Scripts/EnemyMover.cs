@@ -15,6 +15,7 @@ public class EnemyMover : MonoBehaviour
 
     IEnumerator PrintWaypointName()
     {
+
         foreach (var waypoint in path)
         {
             Vector3 startPosition = transform.position;
