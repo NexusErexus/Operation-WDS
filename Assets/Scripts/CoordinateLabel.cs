@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 [ExecuteInEditMode]
 public class CoordinateLabel : MonoBehaviour
@@ -11,6 +12,7 @@ public class CoordinateLabel : MonoBehaviour
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
     Waypoint waypoint;
+    public InputActionReference toggleLabelAction;
 
     float snapMoveX;
     float snapMoveY;
@@ -36,9 +38,16 @@ public class CoordinateLabel : MonoBehaviour
             UpdateObjectName();
         }
         ColorCoordinates();
-        ToggleLabels();
+        //OnToggleLabels();
     }
-
+    private void OnEnable()
+    {
+        toggleLabelAction.action.started += OnToggleLabels;
+    }
+    private void OnDisable()
+    {
+        toggleLabelAction.action.started -= OnToggleLabels;
+    }
     void DisplayCoordinates()
     {
         //label.text = "1,1";
@@ -65,11 +74,13 @@ public class CoordinateLabel : MonoBehaviour
         }
     }
 
-    void ToggleLabels()
+    void OnToggleLabels(InputAction.CallbackContext ctx)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             label.enabled = !label.IsActive();
-        }
+        }*/
+        Debug.Log("Toggle");
+        label.enabled = !label.IsActive();
     }
 }
