@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int maxHitPoints = 2;
+    [SerializeField] int maxHitPoints = 5;
 
     int currentHitPoints;
     int damage = 1;
@@ -15,7 +15,10 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHitPoints = maxHitPoints;
     }
-
+    void Update()
+    {
+        
+    }
     public void DecreaseHealth(int damage)
     {
         currentHitPoints--;
@@ -29,7 +32,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void OnParticleCollision(GameObject other)
     {
-        Debug.Log(currentHitPoints);
         DecreaseHealth(damage);
     }
 

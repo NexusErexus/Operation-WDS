@@ -232,7 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97bfa8cbdcc03f48b2b2453aae898e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlaceable: 1
+  isNotPathPlaceable: 0
+  isTilePlaceable: 1
   turretPrefab: {fileID: 6073827712653499383, guid: 0bb07d490b6d48a4a93ca7ec9bb3e1ab, type: 3}
   mouseClickAction: {fileID: -806627921422104157, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
 --- !u!114 &3411593662623503961

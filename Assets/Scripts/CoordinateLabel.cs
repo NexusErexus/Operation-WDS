@@ -6,8 +6,11 @@ using TMPro;
 [ExecuteInEditMode]
 public class CoordinateLabel : MonoBehaviour
 {
+    [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color blockedColor = Color.grey;
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
+    Waypoint waypoint;
 
     float snapMoveX;
     float snapMoveY;
@@ -17,7 +20,9 @@ public class CoordinateLabel : MonoBehaviour
     {
         snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
         snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
+        waypoint = GetComponentInParent<Waypoint>();
         label = GetComponent<TextMeshPro>();
+        label.enabled = false;
         DisplayCoordinates();
         UpdateObjectName();
     }
@@ -30,6 +35,8 @@ public class CoordinateLabel : MonoBehaviour
             DisplayCoordinates();
             UpdateObjectName();
         }
+        ColorCoordinates();
+        ToggleLabels();
     }
 
     void DisplayCoordinates()
@@ -44,5 +51,25 @@ public class CoordinateLabel : MonoBehaviour
     void UpdateObjectName()
     {
         transform.parent.name = ($"[{label.text}]");
+    }
+
+    void ColorCoordinates()
+    {
+        if (waypoint.IsTilePlaceable)
+        {
+            label.color = defaultColor;
+        }
+        else
+        {
+            label.color = blockedColor;
+        }
+    }
+
+    void ToggleLabels()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            label.enabled = !label.IsActive();
+        }
     }
 }

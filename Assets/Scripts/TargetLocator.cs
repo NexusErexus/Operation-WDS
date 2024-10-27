@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TargetLocator : MonoBehaviour
@@ -15,7 +16,10 @@ public class TargetLocator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AimGun();
+        if (target != null)
+        {
+            AimGun();
+        }
     }
 
     void AimGun()
@@ -26,4 +30,5 @@ public class TargetLocator : MonoBehaviour
             t.rotation = Quaternion.LookRotation(direction);
         }
     }
+
 }

@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] bool isPlaceable;
+    [SerializeField] bool isNotPathPlaceable;
+    [SerializeField] bool isTilePlaceable;
+    public bool IsTilePlaceable { get { return isTilePlaceable; } }
     [SerializeField] GameObject turretPrefab;
     GameObject destroyTurret;
     public InputActionReference mouseClickAction;
@@ -21,7 +23,7 @@ public class Waypoint : MonoBehaviour
         mouseClickAction.action.performed -= OnMouseClickAction;
     }
 
-    public void OnMouseClickAction(InputAction.CallbackContext cxt)
+    public void OnMouseClickAction(InputAction.CallbackContext ctx)
     {
         Vector2 mousePosition = Mouse.current.position.ReadValue();
 
@@ -29,19 +31,19 @@ public class Waypoint : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform == transform && isPlaceable)
+            if (hit.transform == transform && isTilePlaceable)
             {
                 Vector3 correctPosition = transform.position + new Vector3(0, 0.25f, 0);
                 destroyTurret = Instantiate(turretPrefab, correctPosition, Quaternion.identity);
-                isPlaceable = false;
+                isTilePlaceable = false;
             }
-            else if (hit.transform == transform && !isPlaceable)
+            else if (hit.transform == transform && !isTilePlaceable && !isNotPathPlaceable)
             {
                 Destroy(destroyTurret);
-                isPlaceable = true;
+                isTilePlaceable = true;
             }
-            
+
         }
-        
+
     }
 }
