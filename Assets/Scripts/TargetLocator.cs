@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TargetLocator : MonoBehaviour
 {
-    [SerializeField] Transform[] gun;
-    Transform target;
+    [SerializeField] private Transform[] gun; //top turret parts for moving
+    private Transform target; //coordinates for enemy
     // Start is called before the first frame update
-    void Start()
+    
+    private void Start()
     {
-        
-        target = FindObjectOfType<EnemyMover>().transform;
-       
+        target = FindObjectOfType<EnemyMover>().transform; //access to enemy transform
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (target != null)
         {
@@ -24,7 +20,7 @@ public class TargetLocator : MonoBehaviour
         }
     }
 
-    void AimGun()
+    public void AimGun() //top parts of turret follow the enemy
     {
         foreach (Transform t in gun)
         {

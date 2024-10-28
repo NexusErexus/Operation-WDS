@@ -1,52 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
-    [SerializeField] [Range(0f, 5f)] float enemySpeed = 1f;
+    [SerializeField] private List<Waypoint> path = new List<Waypoint>(); // list of path where the enemy can move
+    [SerializeField] [Range(0f, 5f)] private float enemySpeed = 1f; //enemy speed
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         FindPath();
-        //ReturnToStartPosition();
+        ReturnToStartPosition();
         StartCoroutine(PrintWaypointName());  
     }
 
-    void FindPath()
+    private void FindPath() // adding the path tiles form the hierarchy
     {
-        path.Clear();
-        GameObject[] waypoints =  GameObject.FindGameObjectsWithTag("Path");
+        path.Clear(); // delete current path to prevent copying
+        GameObject parent = GameObject.FindGameObjectWithTag("Path"); //find the parent GameObject with "Path" tag
 
+        foreach (Transform child in parent.transform) //adding child elements of parent object to the list based on tag
+        {
+            path.Add(child.GetComponent<Waypoint>());
+        }
+
+        /*
+        GameObject[] waypoints =  GameObject.FindGameObjectsWithTag("Path");
+         
         foreach (GameObject waypoint in waypoints)
         {
             path.Add(waypoint.GetComponent<Waypoint>());
         }
-            
+        
+        path.Reverse(); // invert elements of the list
+        */
     }
 
-    void ReturnToStartPosition()
+    public void ReturnToStartPosition() //begin path from the beginning
     {
-        transform.position = path[7].transform.position;
-        Debug.Log(path[0]);
+        transform.position = path[0].transform.position;
     }
 
-    IEnumerator PrintWaypointName()
+    public IEnumerator PrintWaypointName()
     {
-
-        foreach (var waypoint in path)
+        foreach (Waypoint waypoint in path) 
         {
-            Vector3 startPosition = transform.position;
-            Vector3 endPosition = waypoint.transform.position;
+            Vector3 startPosition = transform.position; //start position of the current tile
+            Vector3 endPosition = waypoint.transform.position; //start position of the next tile
             float timePercent = 0f;
 
             Vector3 directionTarget = endPosition - startPosition;
-            Quaternion startRotation = transform.rotation;
-            Quaternion endRotation = Quaternion.LookRotation(directionTarget);
+            Quaternion startRotation = transform.rotation; //current rotation
+            Quaternion endRotation = Quaternion.LookRotation(directionTarget); //rotate the object to the point
 
             while (timePercent <= 1f)
             {
@@ -58,13 +64,11 @@ public class EnemyMover : MonoBehaviour
                 }*/
 
                 timePercent += Time.deltaTime * enemySpeed;
-                //Debug.Log(timePercent);
-                transform.SetPositionAndRotation(Vector3.Lerp(startPosition, endPosition, timePercent), Quaternion.Slerp(startRotation, endRotation, 5 * timePercent));
-                yield return new WaitForEndOfFrame();
+                transform.position = Vector3.Lerp(startPosition, endPosition, timePercent); //smooth movement from start to end position
+                transform.rotation = Quaternion.Slerp(startRotation, endRotation, 5 * timePercent); //smooth rotation from start to end position
+                yield return new WaitForEndOfFrame(); //stops the current frame to make smooth animation
             }
-
-
         }
-
+        Destroy(gameObject);
     }
 }

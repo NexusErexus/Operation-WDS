@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -7,64 +5,70 @@ using UnityEngine.InputSystem;
 [ExecuteInEditMode]
 public class CoordinateLabel : MonoBehaviour
 {
-    [SerializeField] Color defaultColor = Color.white;
-    [SerializeField] Color blockedColor = Color.grey;
-    TextMeshPro label;
-    Vector2Int coordinates = new Vector2Int();
-    Waypoint waypoint;
-    public InputActionReference toggleLabelAction;
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color blockedColor = Color.grey;
+    [SerializeField] private InputActionReference toggleLabelAction; //reference to action map
 
-    float snapMoveX;
-    float snapMoveY;
+    private TextMeshPro label;
+    private Vector2Int coordinates = new Vector2Int();
+    private Waypoint waypoint;
+    
+
+    private float snapMoveX;
+    private float snapMoveY;
 
 
-    void Awake()
+    private void Awake()
     {
 
         snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
         snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
         waypoint = GetComponentInParent<Waypoint>();
         label = GetComponent<TextMeshPro>();
-        label.enabled = false;
         DisplayCoordinates();
         UpdateObjectName();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (!Application.isPlaying)
+        label.enabled = false;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (!Application.isPlaying) //edit mode
         {
             DisplayCoordinates();
             UpdateObjectName();
         }
         ColorCoordinates();
     }
-    private void OnEnable()
+    private void OnEnable() 
     {
-        toggleLabelAction.action.Enable();
-        toggleLabelAction.action.performed += OnToggleLabels;
+        toggleLabelAction.action.Enable(); //enable action map
+        toggleLabelAction.action.performed += OnToggleLabelVisible;
     }
     private void OnDisable()
     {
-        toggleLabelAction.action.Disable(); 
-        toggleLabelAction.action.performed -= OnToggleLabels;
+        toggleLabelAction.action.Disable(); //disable avtion map
+        toggleLabelAction.action.performed -= OnToggleLabelVisible;
     }
-    void DisplayCoordinates()
+    public void DisplayCoordinates() //show coordinates of tile
     {
-        //label.text = "1,1";
-
+        //label name for example = "1,1";
+        label.enabled = true;
         coordinates.x = (int)(transform.parent.position.x / snapMoveX);
         coordinates.y = (int)(transform.parent.position.z / snapMoveY);
         label.text = ($"{coordinates.x}, {coordinates.y}");
     }
 
-    void UpdateObjectName()
+    public void UpdateObjectName() //update label text while moving it
     {
         transform.parent.name = ($"[{label.text}]");
     }
 
-    void ColorCoordinates()
+    public void ColorCoordinates() //changing color of label
     {
         if (waypoint.IsTilePlaceable)
         {
@@ -76,9 +80,8 @@ public class CoordinateLabel : MonoBehaviour
         }
     }
 
-    void OnToggleLabels(InputAction.CallbackContext ctx)
+    public void OnToggleLabelVisible(InputAction.CallbackContext ctx) //turn on/off label visibillity
     {
-        Debug.Log("hi");
         label.enabled = !label.IsActive();
     }
 }
