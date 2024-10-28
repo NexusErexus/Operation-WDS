@@ -9,7 +9,6 @@ public class EnemyHealth : MonoBehaviour
     int currentHitPoints;
     int damage = 1;
 
-    bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {

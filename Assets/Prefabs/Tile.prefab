@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   blockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  toggleLabelAction: {fileID: -8700280082224959328, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
+  toggleLabelAction: {fileID: 2699392886429389638, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
 --- !u!114 &4546250047542295322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: KeyboardControls
+  m_DefaultControlScheme: KeyboardAndMouse
+  m_DefaultActionMap: GameplayControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &6558913069338443413
@@ -269,7 +269,7 @@ MonoBehaviour:
   isNotPathPlaceable: 0
   isTilePlaceable: 1
   turretPrefab: {fileID: 6073827712653499383, guid: 0bb07d490b6d48a4a93ca7ec9bb3e1ab, type: 3}
-  mouseClickAction: {fileID: -806627921422104157, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
+  mouseClickAction: {fileID: -895666302831719524, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
 --- !u!114 &3411593662623503961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,8 +296,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Mouse
-  m_DefaultActionMap: MouseControls
+  m_DefaultControlScheme: KeyboardAndMouse
+  m_DefaultActionMap: GameplayControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!65 &5498645295046384535

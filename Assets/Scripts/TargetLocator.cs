@@ -10,7 +10,10 @@ public class TargetLocator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<EnemyMover>().transform;
+        if (gun != null)
+        {
+            target = FindObjectOfType<EnemyMover>().transform;
+        }
     }
 
     // Update is called once per frame

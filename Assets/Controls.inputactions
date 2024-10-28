@@ -2,41 +2,22 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "MouseControls",
+            "name": "GameplayControls",
             "id": "f6c1bf0c-0678-489e-a39e-4bdd247a9658",
             "actions": [
                 {
                     "name": "ClickTile",
                     "type": "Button",
-                    "id": "0fad0798-4be5-4922-bac6-4bd00d2e0bc7",
+                    "id": "0dc897e9-2933-46b5-b43c-453684ff6ec7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "71f6c6a1-9412-4d01-a394-3194242de2da",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse",
-                    "action": "ClickTile",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "KeyboardControls",
-            "id": "9562a089-8a19-4989-b651-50b250783b17",
-            "actions": [
+                },
                 {
                     "name": "ToggleLabelVisibillity",
                     "type": "Button",
-                    "id": "c60b6df8-6933-4194-858b-2805fd5f0f43",
+                    "id": "c9e86963-36df-4967-9437-a9243972013a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -46,11 +27,22 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "92bd212c-12d6-4d79-b17d-9a19d12363e7",
+                    "id": "7644e07d-0e4d-42a7-90d0-fa7ad2f29920",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "ClickTile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2dca3f3a-0152-4548-90cd-8c210747cb64",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "KeyboardAndMouse",
                     "action": "ToggleLabelVisibillity",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -60,20 +52,14 @@
     ],
     "controlSchemes": [
         {
-            "name": "Mouse",
-            "bindingGroup": "Mouse",
+            "name": "KeyboardAndMouse",
+            "bindingGroup": "KeyboardAndMouse",
             "devices": [
                 {
                     "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
-            "devices": [
+                },
                 {
                     "devicePath": "<Keyboard>",
                     "isOptional": false,

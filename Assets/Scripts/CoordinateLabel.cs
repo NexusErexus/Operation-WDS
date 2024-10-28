@@ -38,15 +38,14 @@ public class CoordinateLabel : MonoBehaviour
             UpdateObjectName();
         }
         ColorCoordinates();
-        //OnToggleLabels();
     }
     private void OnEnable()
     {
-        toggleLabelAction.action.started += OnToggleLabels;
+        toggleLabelAction.action.performed += OnToggleLabels;
     }
     private void OnDisable()
     {
-        toggleLabelAction.action.started -= OnToggleLabels;
+        toggleLabelAction.action.performed -= OnToggleLabels;
     }
     void DisplayCoordinates()
     {
@@ -76,11 +75,7 @@ public class CoordinateLabel : MonoBehaviour
 
     void OnToggleLabels(InputAction.CallbackContext ctx)
     {
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            label.enabled = !label.IsActive();
-        }*/
-        Debug.Log("Toggle");
+        Debug.Log("hi");
         label.enabled = !label.IsActive();
     }
 }
