@@ -15,11 +15,13 @@ public class Waypoint : MonoBehaviour
 
     private void OnEnable()
     {
+        mouseClickAction.action.Enable();
         mouseClickAction.action.performed += OnMouseClickAction;
     }
 
     private void OnDisable()
     {
+        mouseClickAction.action.Disable();
         mouseClickAction.action.performed -= OnMouseClickAction;
     }
 

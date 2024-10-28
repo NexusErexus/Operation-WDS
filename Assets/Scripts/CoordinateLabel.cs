@@ -20,6 +20,7 @@ public class CoordinateLabel : MonoBehaviour
 
     void Awake()
     {
+
         snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
         snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
         waypoint = GetComponentInParent<Waypoint>();
@@ -41,10 +42,12 @@ public class CoordinateLabel : MonoBehaviour
     }
     private void OnEnable()
     {
+        toggleLabelAction.action.Enable();
         toggleLabelAction.action.performed += OnToggleLabels;
     }
     private void OnDisable()
     {
+        toggleLabelAction.action.Disable(); 
         toggleLabelAction.action.performed -= OnToggleLabels;
     }
     void DisplayCoordinates()

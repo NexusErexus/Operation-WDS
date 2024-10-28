@@ -2,22 +2,13 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "GameplayControls",
+            "name": "MouseControls",
             "id": "f6c1bf0c-0678-489e-a39e-4bdd247a9658",
             "actions": [
                 {
                     "name": "ClickTile",
                     "type": "Button",
                     "id": "0dc897e9-2933-46b5-b43c-453684ff6ec7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleLabelVisibillity",
-                    "type": "Button",
-                    "id": "c9e86963-36df-4967-9437-a9243972013a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -35,10 +26,27 @@
                     "action": "ClickTile",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "KeyboardControls",
+            "id": "d236c749-afc5-44cd-994a-8733b88ca2ee",
+            "actions": [
+                {
+                    "name": "ToggleLabelVisibillity",
+                    "type": "Button",
+                    "id": "ff50f3a2-1fa5-45dc-aae9-490aa2bd1e42",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "2dca3f3a-0152-4548-90cd-8c210747cb64",
+                    "id": "6c6b38b7-162a-467e-be7b-2833ebcb091d",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",

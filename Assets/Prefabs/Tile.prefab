@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   blockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  toggleLabelAction: {fileID: 2699392886429389638, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
+  toggleLabelAction: {fileID: 6963527314089996838, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
 --- !u!114 &4546250047542295322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: KeyboardAndMouse
-  m_DefaultActionMap: GameplayControls
+  m_DefaultActionMap: MouseControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &6558913069338443413
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: KeyboardAndMouse
-  m_DefaultActionMap: GameplayControls
+  m_DefaultActionMap: MouseControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!65 &5498645295046384535

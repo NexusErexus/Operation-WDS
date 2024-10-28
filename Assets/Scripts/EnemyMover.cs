@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,27 @@ public class EnemyMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindPath();
+        //ReturnToStartPosition();
         StartCoroutine(PrintWaypointName());  
+    }
+
+    void FindPath()
+    {
+        path.Clear();
+        GameObject[] waypoints =  GameObject.FindGameObjectsWithTag("Path");
+
+        foreach (GameObject waypoint in waypoints)
+        {
+            path.Add(waypoint.GetComponent<Waypoint>());
+        }
+            
+    }
+
+    void ReturnToStartPosition()
+    {
+        transform.position = path[7].transform.position;
+        Debug.Log(path[0]);
     }
 
     IEnumerator PrintWaypointName()
