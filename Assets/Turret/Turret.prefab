@@ -168,6 +168,9 @@ MonoBehaviour:
   gun:
   - {fileID: 6926669711547039499}
   - {fileID: 3898088180216307014}
+  range: 15
+  gunRotationSpeed: 6
+  projectileParticles: {fileID: 4487779156656989375}
 --- !u!4 &6926669711547039499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4083501151425157549, guid: 3171a925aa574f341be8bef070bd148f, type: 3}
@@ -250,6 +253,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e34828bcfbebf3459c54bb67f8b0bfc, type: 3}
+--- !u!198 &4487779156656989375 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5132813950475630813, guid: 4e34828bcfbebf3459c54bb67f8b0bfc, type: 3}
+  m_PrefabInstance: {fileID: 8754048016575749218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4487779156672221205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5132813950494985335, guid: 4e34828bcfbebf3459c54bb67f8b0bfc, type: 3}

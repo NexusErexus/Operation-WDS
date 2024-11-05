@@ -8,7 +8,7 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0f, 5f)] private float enemySpeed = 1f; //enemy speed
 
     // Start is called before the first frame update
-    private void Start()
+    private void OnEnable()
     {
         FindPath();
         ReturnToStartPosition();
@@ -54,6 +54,8 @@ public class EnemyMover : MonoBehaviour
             Quaternion startRotation = transform.rotation; //current rotation
             Quaternion endRotation = Quaternion.LookRotation(directionTarget); //rotate the object to the point
 
+
+
             while (timePercent <= 1f)
             {
 
@@ -69,6 +71,6 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame(); //stops the current frame to make smooth animation
             }
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

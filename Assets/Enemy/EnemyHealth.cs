@@ -3,12 +3,11 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int maxHitPoints = 5; //full hp
-
-    private int currentHitPoints; //current hp
+    [SerializeField] private int currentHitPoints; //current hp
     private int damage = 1; //damage value
 
     // Start is called before the first frame update
-    private void Start()
+    private void OnEnable()
     {
         currentHitPoints = maxHitPoints; //assign full hp to the enemy
     }
@@ -31,6 +30,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void KillEnemy() //destroy when enemy hp is 0
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
