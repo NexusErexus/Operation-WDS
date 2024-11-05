@@ -6,6 +6,7 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private List<Waypoint> path = new List<Waypoint>(); // list of path where the enemy can move
     [SerializeField] [Range(0f, 5f)] private float enemySpeed = 1f; //enemy speed
+    Enemy enemy;
 
     // Start is called before the first frame update
     private void OnEnable()
@@ -15,6 +16,10 @@ public class EnemyMover : MonoBehaviour
         StartCoroutine(PrintWaypointName());  
     }
 
+    private void Start()
+    {
+        enemy = GetComponent<Enemy>();
+    }
     private void FindPath() // adding the path tiles form the hierarchy
     {
         path.Clear(); // delete current path to prevent copying
@@ -72,5 +77,6 @@ public class EnemyMover : MonoBehaviour
             }
         }
         gameObject.SetActive(false);
+        enemy.StealMoney();
     }
 }

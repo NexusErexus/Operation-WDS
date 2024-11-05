@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNotPathPlaceable: 0
   isTilePlaceable: 1
-  turretPrefab: {fileID: 6073827712653499383, guid: 0bb07d490b6d48a4a93ca7ec9bb3e1ab, type: 3}
+  turretPrefab: {fileID: 2064494075755597380, guid: 0bb07d490b6d48a4a93ca7ec9bb3e1ab, type: 3}
   mouseClickAction: {fileID: -895666302831719524, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
 --- !u!114 &3411593662623503961
 MonoBehaviour:

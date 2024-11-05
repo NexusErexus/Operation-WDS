@@ -5,7 +5,7 @@ public class Waypoint : MonoBehaviour
 {
     [SerializeField] bool isNotPathPlaceable; // road path check (false)
     [SerializeField] bool isTilePlaceable; //check for placing turret
-    [SerializeField] private GameObject turretPrefab;
+    [SerializeField] private Tower turretPrefab;
     [SerializeField] private InputActionReference mouseClickAction; //reference to action map
     public bool IsTilePlaceable { get { return isTilePlaceable; } }
     
@@ -35,14 +35,15 @@ public class Waypoint : MonoBehaviour
             if (hit.transform == transform && isTilePlaceable) //ray coordinates equals tile coordinates
             {
                 Vector3 correctPosition = transform.position + new Vector3(0, 0.25f, 0); //create position for instantiating turret
-                turretObject = Instantiate(turretPrefab, correctPosition, Quaternion.identity); //spawn the turret
-                isTilePlaceable = false;
+                //turretObject = Instantiate(turretPrefab, correctPosition, Quaternion.identity); //spawn the turret
+                bool isPlaced = turretPrefab.CreateTower(turretPrefab, correctPosition);
+                isTilePlaceable = !isPlaced;
             }
-            else if (hit.transform == transform && !isTilePlaceable && !isNotPathPlaceable) //destroy the object when tile is busy by another turret
+            /*else if (hit.transform == transform && !isTilePlaceable && !isNotPathPlaceable) //destroy the object when tile is busy by another turret
             {
                 Destroy(turretObject);
                 isTilePlaceable = true;
-            }
+            }*/
 
         }
     }

@@ -292,6 +292,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5553117672967136801, guid: a6a7b038095d6ee4093e91479331eb02, type: 3}
   m_PrefabInstance: {fileID: 1053816134}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &295946472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295946474}
+  - component: {fileID: 295946473}
+  m_Layer: 0
+  m_Name: Bank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &295946473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295946472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75575f073ef38ae43a689dd2d146f51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstBalance: 200
+  currentBalance: 0
+--- !u!4 &295946474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295946472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.114484, y: -4.4961205, z: 18.474619}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &312311334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2347,6 +2393,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5060592074595074377, guid: fc1f97c0f732a4f42bd80ab4f0234a08, type: 3}
   poolSize: 5
   spawnTimer: 1
+  enemyOrder: 0
 --- !u!4 &1635510293
 Transform:
   m_ObjectHideFlags: 0
@@ -2677,3 +2724,4 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1863435221}
   - {fileID: 1635510293}
+  - {fileID: 295946474}

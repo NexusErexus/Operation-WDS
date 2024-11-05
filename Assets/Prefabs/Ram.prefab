@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fcb6e781c4d434f91e2556ca547d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 5
+  maxHitPoints: 3
   currentHitPoints: 0
 --- !u!114 &951070100272744393
 MonoBehaviour:
@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd47bd35afa25a4d9c6b2c3fc0e2e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyReward: 20
+  moneyPenalty: 20
 --- !u!1 &7306118841028415418
 GameObject:
   m_ObjectHideFlags: 0
