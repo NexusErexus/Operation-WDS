@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHitPoints = 5; //full hp
+    [SerializeField] private int maxHitPoints = 1; //full hp
     [SerializeField] private int currentHitPoints; //current hp
     private int damage = 1; //damage value
 
@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void DecreaseHealth(int damage) //take damage
     {
+
         currentHitPoints -= damage;
 
         if (currentHitPoints <= 0)
@@ -29,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void OnParticleCollision(GameObject other)
     {
+        Debug.Log("3");
         DecreaseHealth(damage);
     }
 

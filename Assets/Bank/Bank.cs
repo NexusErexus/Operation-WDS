@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Bank : MonoBehaviour
 {
-    [SerializeField] private int firstBalance = 200;
+    [SerializeField] private int firstBalance = 200; // init balance
     [SerializeField] private int currentBalance;
+    [SerializeField] private TextMeshProUGUI displayGoldBalance;
     public int CurrentBalance
     {
         get
@@ -17,29 +19,39 @@ public class Bank : MonoBehaviour
     private void Awake()
     {
         currentBalance = firstBalance;
+
     }
 
     private void Start()
     {
-        StartCoroutine(IncrementMoney());
+        StartCoroutine(IncrementMoney()); 
     }
+
     public void AddMoney(int amount)
     {
         currentBalance += Mathf.Abs(amount);
+        UpdateGoldBalanceDisplay();
     }
     public void SpendMoney(int amount)
     {
         currentBalance -= Mathf.Abs(amount);
+        UpdateGoldBalanceDisplay();
         if (currentBalance < 0)
         {
             currentBalance = 0;
         }
     }
 
-    public IEnumerator IncrementMoney()
-    {        
+    public IEnumerator IncrementMoney() //adding 1 coin ever second
+    {
+        UpdateGoldBalanceDisplay();
         currentBalance++;
         yield return new WaitForSeconds(1f);
         StartCoroutine(IncrementMoney());
+    }
+
+    public void UpdateGoldBalanceDisplay()
+    {
+        displayGoldBalance.text = $"Gold: {currentBalance}";
     }
 }
