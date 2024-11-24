@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1601035227098608127}
   - component: {fileID: 6962096549067423615}
   - component: {fileID: 2899815988160198436}
-  - component: {fileID: 4070294883661679206}
+  - component: {fileID: 3797144035065133129}
   - component: {fileID: 951070100272744393}
   m_Layer: 0
   m_Name: Ram
@@ -71,7 +71,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 4}
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!114 &4070294883661679206
+--- !u!114 &3797144035065133129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,8 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fcb6e781c4d434f91e2556ca547d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 3
-  currentHitPoints: 0
+  maxHitPoints: 5
 --- !u!114 &951070100272744393
 MonoBehaviour:
   m_ObjectHideFlags: 0

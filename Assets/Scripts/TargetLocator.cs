@@ -48,20 +48,20 @@ public class TargetLocator : MonoBehaviour
         }
         
         float targetDistance = Vector3.Distance(transform.position, target.position);
-        /*foreach (Transform t in gun)
-        {
-       /* Vector3 direction = target.position - t.position;
-        t.rotation = Quaternion.LookRotation(direction);*/
-           /* Quaternion startRotation = weapon.transform.rotation;
-            Quaternion endRotation = Quaternion.LookRotation(target.position - weapon.transform.position);
-            weapon.transform.rotation = Quaternion.Lerp(startRotation, endRotation, gunRotationSpeed * Time.deltaTime);
-            
-        }*/
-        projectileParticles.transform.position = weapon.transform.position;
         foreach (Transform t in gun)
         {
-            t.LookAt(target);
+            /*Vector3 direction = target.position - t.position;
+            t.rotation = Quaternion.LookRotation(direction);*/
+            Quaternion startRotation = t.transform.rotation;
+            Quaternion endRotation = Quaternion.LookRotation(target.position - t.transform.position);
+            t.transform.rotation = Quaternion.Lerp(startRotation, endRotation, gunRotationSpeed * Time.deltaTime);
+            
         }
+        //projectileParticles.transform.position = weapon.transform.position;
+        /*foreach (Transform t in gun)
+        {
+            t.LookAt(target);
+        }*/
         if (targetDistance < range)
         {
             Attack(true);

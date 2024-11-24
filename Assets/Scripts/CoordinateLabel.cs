@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 
 [ExecuteInEditMode]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabel : MonoBehaviour
 {
     [SerializeField] private Color defaultColor = Color.white;
@@ -20,9 +21,6 @@ public class CoordinateLabel : MonoBehaviour
 
     private void Awake()
     {
-
-        snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
-        snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
         waypoint = GetComponentInParent<Waypoint>();
         label = GetComponent<TextMeshPro>();
         DisplayCoordinates();
@@ -42,7 +40,7 @@ public class CoordinateLabel : MonoBehaviour
             DisplayCoordinates();
             UpdateObjectName();
         }
-        ColorCoordinates();
+        SetLabelColor();
     }
     private void OnEnable() 
     {
@@ -56,11 +54,18 @@ public class CoordinateLabel : MonoBehaviour
     }
     public void DisplayCoordinates() //show coordinates of tile
     {
-        //label name for example = "1,1";
+        #if UNITY_EDITOR
+        snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
+        snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
+        #else
+        snapMoveX = 1f;
+        snapMoveY = 1f;
+        #endif
+
         label.enabled = true;
         coordinates.x = (int)(transform.parent.position.x / snapMoveX);
         coordinates.y = (int)(transform.parent.position.z / snapMoveY);
-        label.text = ($"{coordinates.x}, {coordinates.y}");
+        label.text = ($"{coordinates.x}, {coordinates.y}"); //label name for example = "1,1";
     }
 
     public void UpdateObjectName() //update label text while moving it
@@ -68,7 +73,7 @@ public class CoordinateLabel : MonoBehaviour
         transform.parent.name = ($"[{label.text}]");
     }
 
-    public void ColorCoordinates() //changing color of label
+    public void SetLabelColor() //changing color of label
     {
         if (waypoint.IsTilePlaceable)
         {
@@ -80,7 +85,7 @@ public class CoordinateLabel : MonoBehaviour
         }
     }
 
-    public void OnToggleLabelVisible(InputAction.CallbackContext ctx) //turn on/off label visibillity
+    public void OnToggleLabelVisible(InputAction.CallbackContext ctx) //turn on/off label visibillity (Default: C)
     {
         label.enabled = !label.IsActive();
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private List<Waypoint> path = new List<Waypoint>(); // list of path where the enemy can move
@@ -27,7 +28,12 @@ public class EnemyMover : MonoBehaviour
 
         foreach (Transform child in parent.transform) //adding child elements of parent object to the list based on tag
         {
-            path.Add(child.GetComponent<Waypoint>());
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+            if (waypoint != null) 
+            {
+                path.Add(waypoint);
+
+            }
         }
 
         /*
@@ -47,18 +53,22 @@ public class EnemyMover : MonoBehaviour
         transform.position = path[0].transform.position;
     }
 
+    public void FinishPath()
+    {
+        gameObject.SetActive(false);
+        enemy.StealMoney();
+    }
+
     public IEnumerator PrintWaypointName()
     {
         foreach (Waypoint waypoint in path) 
         {
             Vector3 startPosition = transform.position; //start position of the current tile
             Vector3 endPosition = waypoint.transform.position; //start position of the next tile
-            float timePercent = 0f;
-
             Vector3 directionTarget = endPosition - startPosition;
             Quaternion startRotation = transform.rotation; //current rotation
             Quaternion endRotation = Quaternion.LookRotation(directionTarget); //rotate the object to the point
-
+            float timePercent = 0f;
 
 
             while (timePercent <= 1f)
@@ -74,9 +84,11 @@ public class EnemyMover : MonoBehaviour
                 transform.position = Vector3.Lerp(startPosition, endPosition, timePercent); //smooth movement from start to end position
                 transform.rotation = Quaternion.Slerp(startRotation, endRotation, 5 * timePercent); //smooth rotation from start to end position
                 yield return new WaitForEndOfFrame(); //stops the current frame to make smooth animation
+
+                
             }
+            
         }
-        gameObject.SetActive(false);
-        enemy.StealMoney();
+        FinishPath();
     }
 }
