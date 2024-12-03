@@ -7,6 +7,7 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private List<Waypoint> path = new List<Waypoint>(); // list of path where the enemy can move
     [SerializeField] [Range(0f, 5f)] private float enemySpeed = 1f; //enemy speed
+    private bool isDefaultSpeed = true;
     Enemy enemy;
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class EnemyMover : MonoBehaviour
     {
         FindPath();
         ReturnToStartPosition();
+        IncreaseSpeed();
         StartCoroutine(PrintWaypointName());  
     }
 
@@ -57,6 +59,16 @@ public class EnemyMover : MonoBehaviour
     {
         gameObject.SetActive(false);
         enemy.StealMoney();
+    }
+
+    public void IncreaseSpeed()
+    {
+        if (enemySpeed == 1f && isDefaultSpeed)
+        {
+            isDefaultSpeed = false;
+            return;
+        }
+        enemySpeed += 0.05f;
     }
 
     public IEnumerator PrintWaypointName()

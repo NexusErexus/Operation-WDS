@@ -35,19 +35,22 @@ public class Bank : MonoBehaviour
     public void SpendMoney(int amount)
     {
         currentBalance -= Mathf.Abs(amount);
-        UpdateGoldBalanceDisplay();
         if (currentBalance < 0)
         {
             currentBalance = 0;
         }
+        UpdateGoldBalanceDisplay();
     }
 
     public IEnumerator IncrementMoney() //adding 1 coin ever second
     {
-        UpdateGoldBalanceDisplay();
-        currentBalance++;
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(IncrementMoney());
+        while (true)
+        {
+            UpdateGoldBalanceDisplay();
+            currentBalance++;
+            yield return new WaitForSeconds(1f);
+        }
+        //StartCoroutine(IncrementMoney());
     }
 
     public void UpdateGoldBalanceDisplay()

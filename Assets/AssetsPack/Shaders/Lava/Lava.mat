@@ -188,7 +188,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
-    - _BottomPower: 0.89
+    - _BottomPower: 15
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -202,7 +202,7 @@ Material:
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
     - _EnvironmentReflections: 1
-    - _Frenselpower: 0.6
+    - _Frenselpower: 3.1
     - _GlossMapScale: 1
     - _Glossiness: 0.522
     - _GlossyReflections: 1
@@ -215,7 +215,7 @@ Material:
     - _Metallic3: 0
     - _Mode: 0
     - _NoiseAmount: 1
-    - _NoiseScale: 30
+    - _NoiseScale: 3.06
     - _Normal_Strength: 20
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
@@ -243,9 +243,9 @@ Material:
     - _Surface: 0
     - _UVSec: 0
     - _UseUIAlphaClip: 0
-    - _VoronoiAO: 1
+    - _VoronoiAO: 2
     - _VoronoiAmount: -0.05
-    - _VoronoiScale: 15
+    - _VoronoiScale: 0.83
     - _WindQuality: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -254,14 +254,14 @@ Material:
     - _BottomRemap: {r: 0.5, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 5.960785, g: 2.6527052, b: 1.46679, a: 0}
+    - _FresnelColor: {r: 3.8580291, g: 1.9822289, b: 1.2920759, a: 0}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _LavaBackground: {r: 7.958114, g: 7.958114, b: 7.958114, a: 0}
     - _LavaColor: {r: 4.372362, g: 2.1405668, b: 0, a: 1}
-    - _LavaNormalSpeed: {r: 0.15, g: 0, b: 0, a: 0}
-    - _LavaScale: {r: 11.71, g: 10, b: 0, a: 0}
-    - _LavaScaleNormal: {r: 10, g: 10, b: 0, a: 0}
-    - _LavaSpeed: {r: 0.1, g: 0, b: 0, a: 0}
+    - _LavaNormalSpeed: {r: 0.01, g: 0, b: 0, a: 0}
+    - _LavaScale: {r: 10.35, g: 10.2, b: 0, a: 0}
+    - _LavaScaleNormal: {r: 13.37, g: 10, b: 0, a: 0}
+    - _LavaSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _Lavaremap: {r: 0, g: 1.5, b: 0, a: 0}
     - _MagmaScale: {r: 2, g: 2, b: 0, a: 0}
     - _NoiseSpeed: {r: 0, g: 0.05, b: 0, a: 0}

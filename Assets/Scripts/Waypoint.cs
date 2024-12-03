@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] bool isNotPathPlaceable; // road path check (false)
+    [SerializeField] bool isRoadPlaceable; // road path check (false)
     [SerializeField] bool isTilePlaceable; //check for placing turret
     [SerializeField] private Tower turretPrefab;
     [SerializeField] private InputActionReference mouseClickAction; //reference to action map

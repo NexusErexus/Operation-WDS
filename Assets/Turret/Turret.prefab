@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 35
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5004,8 +5004,8 @@ MonoBehaviour:
   gun:
   - {fileID: 6926669711547039499}
   - {fileID: 3898088180216307014}
-  range: 30
-  gunRotationSpeed: 6
+  range: 25
+  gunRotationSpeed: 8
   projectileParticles: {fileID: 54441773512122979}
   weapon: {fileID: 6926669711547039499}
 --- !u!114 &2064494075755597380

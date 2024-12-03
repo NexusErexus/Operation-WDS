@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabel : MonoBehaviour
 {
-    [SerializeField] private Color defaultColor = Color.white;
-    [SerializeField] private Color blockedColor = Color.grey;
+    [SerializeField] private Color defaultColor = Color.green;
+    [SerializeField] private Color blockedColor = Color.red;
     [SerializeField] private InputActionReference toggleLabelAction; //reference to action map
 
     private TextMeshPro label;

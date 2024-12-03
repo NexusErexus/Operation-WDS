@@ -13,10 +13,9 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _DETAIL_MULX2
-  - _EMISSION
   - _NORMALMAP
   m_InvalidKeywords: []
-  m_LightmapFlags: 0
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -33,8 +32,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: f4e37c10131f1494888bc3ddcb7b87f7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 1.26, y: 0}
+        m_Scale: {x: 40, y: 56}
+        m_Offset: {x: 5, y: 3}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 7e9632878e287e24799a9afcb174c063, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -65,8 +64,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: f4e37c10131f1494888bc3ddcb7b87f7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 1.26, y: 0}
+        m_Scale: {x: 40, y: 56}
+        m_Offset: {x: 5, y: 3}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -165,10 +164,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.4528302, g: 0.0660155, b: 0.061943766, a: 1}
+    - _BaseColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.45283014, g: 0.066015474, b: 0.06194374, a: 1}
-    - _EmissionColor: {r: 0.0754717, g: 0.006763971, b: 0.006763971, a: 1}
+    - _Color: {r: 0.53773576, g: 0.53773576, b: 0.53773576, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _LavaColor: {r: 4, g: 0.2039216, b: 0, a: 0}
     - _MagmaScale: {r: 10, g: 10, b: 0, a: 0}
