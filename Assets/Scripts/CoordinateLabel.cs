@@ -89,4 +89,8 @@ public class CoordinateLabel : MonoBehaviour
     {
         label.enabled = !label.IsActive();
     }
+    public void Test()
+    {
+
+    }
 }
