@@ -8,11 +8,14 @@ public class CoordinateLabel : MonoBehaviour
 {
     [SerializeField] private Color defaultColor = Color.green;
     [SerializeField] private Color blockedColor = Color.red;
+    [SerializeField] private Color exploredColor = Color.yellow;
+    //[SerializeField] private Color pathColor = new Color(255, 111, 0);
+    [SerializeField] private Color pathColor = Color.black;
     [SerializeField] private InputActionReference toggleLabelAction; //reference to action map
 
     private TextMeshPro label;
     private Vector2Int coordinates = new Vector2Int();
-    private Waypoint waypoint;
+    GridManager gridManager;
     
 
     private float snapMoveX;
@@ -21,7 +24,7 @@ public class CoordinateLabel : MonoBehaviour
 
     private void Awake()
     {
-        waypoint = GetComponentInParent<Waypoint>();
+        gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
         DisplayCoordinates();
         UpdateObjectName();
@@ -57,6 +60,7 @@ public class CoordinateLabel : MonoBehaviour
         #if UNITY_EDITOR
         snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
         snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
+        //Debug.Log((snapMoveX, snapMoveY));
         #else
         snapMoveX = 1f;
         snapMoveY = 1f;
@@ -75,13 +79,26 @@ public class CoordinateLabel : MonoBehaviour
 
     public void SetLabelColor() //changing color of label
     {
-        if (waypoint.IsTilePlaceable)
+        if (gridManager == null) { return; }
+
+        Node node = gridManager.GetNode(coordinates);
+        if (node == null) { return; }
+        if (!node.isWalkable)
         {
-            label.color = defaultColor;
+            label.color = blockedColor;
+        }
+        if (node.isPath)
+        {
+            label.color = pathColor;
+            Debug.Log("orange");
+        }
+        else if (node.isExplored)
+        {
+            label.color = exploredColor;
         }
         else
         {
-            label.color = blockedColor;
+            label.color = defaultColor;
         }
     }
 

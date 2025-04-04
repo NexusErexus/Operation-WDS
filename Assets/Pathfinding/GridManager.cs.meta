@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 4e6ffe49068a78a48a48d03710014153
+guid: 6842e0d80ca86a64c8d154a4d11858cd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - toggleLabelAction: {fileID: 6963527314089996838, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
