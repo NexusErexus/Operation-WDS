@@ -28,13 +28,16 @@ public class Pathfinding : MonoBehaviour
             grid = gridManager.Grid;
         }
 
-        startNode = new Node(startCoords, true);
-        endNode = new Node(endCoords, true);
+        
     }
 
     void Start()
     {
+        startNode = gridManager.Grid[startCoords];
+        endNode = gridManager.Grid[endCoords];
+
         StartCoroutine(BreadthFirstSearch());
+        BuildPath();
         //BreadthFirstSearch();
     }
 
@@ -47,6 +50,7 @@ public class Pathfinding : MonoBehaviour
             //currentSearchNode = gridManager.GetNode(neighborCoordinates);
             if (grid.ContainsKey(neighborCoordinates)) // если координаты соседей существуют
             {
+                
                 neighbors.Add(grid[neighborCoordinates]); // добавить на сетку координаты соседей
                 grid[startCoords].isExplored = true; //перекрасить нулевую координату
                 //grid[currentSearchNode.coordinates].isPath = true;
@@ -57,6 +61,7 @@ public class Pathfinding : MonoBehaviour
         {
             if (!reached.ContainsKey(neighbor.coordinates) && neighbor.isWalkable) //если словарь не содержит координаты текущего соседа и может передвигаться 
             {
+                neighbor.connectedTo = currentSearchNode;
                 reached.Add(neighbor.coordinates, neighbor); //добавляем координаты соседа
                 frontier.Enqueue(neighbor); // добавить в конец очереди границы
             }
@@ -81,5 +86,23 @@ public class Pathfinding : MonoBehaviour
             Debug.Log(currentSearchNode.coordinates);
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    List<Node> BuildPath()
+    {
+        List<Node> path = new List<Node>();
+        Node currentNode = endNode;
+
+        path.Add(currentNode);
+        currentNode.isPath = true;
+
+        while (currentNode.connectedTo != null)
+        {
+            currentNode = currentNode.connectedTo;
+            path.Add(currentNode);
+            currentNode.isPath = true;
+        }
+        path.Reverse();
+        return path;
     }
 }

@@ -187,6 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 0.06140983, g: 1, b: 0, a: 1}
   blockedColor: {r: 1, g: 0, b: 0, a: 1}
+  exploredColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  pathColor: {r: 1, g: 0.43529412, b: 0, a: 1}
   toggleLabelAction: {fileID: 6963527314089996838, guid: 45e5c9beee070b747a76ea6b478cc736, type: 3}
 --- !u!114 &4923302245044419978
 MonoBehaviour:

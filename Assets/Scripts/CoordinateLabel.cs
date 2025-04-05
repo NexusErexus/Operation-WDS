@@ -9,8 +9,8 @@ public class CoordinateLabel : MonoBehaviour
     [SerializeField] private Color defaultColor = Color.green;
     [SerializeField] private Color blockedColor = Color.red;
     [SerializeField] private Color exploredColor = Color.yellow;
-    //[SerializeField] private Color pathColor = new Color(255, 111, 0);
-    [SerializeField] private Color pathColor = Color.black;
+    [SerializeField] private Color pathColor = new Color(255, 111, 0);
+    //[SerializeField] private Color pathColor = Color.black;
     [SerializeField] private InputActionReference toggleLabelAction; //reference to action map
 
     private TextMeshPro label;
