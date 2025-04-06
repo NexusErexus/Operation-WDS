@@ -9,7 +9,7 @@ public class CoordinateLabel : MonoBehaviour
     [SerializeField] private Color defaultColor = Color.green;
     [SerializeField] private Color blockedColor = Color.red;
     [SerializeField] private Color exploredColor = Color.yellow;
-    [SerializeField] private Color pathColor = new Color(255, 111, 0);
+    [SerializeField] private Color pathColor = new Color(0, 0, 255);
     //[SerializeField] private Color pathColor = Color.black;
     [SerializeField] private InputActionReference toggleLabelAction; //reference to action map
 
@@ -18,8 +18,8 @@ public class CoordinateLabel : MonoBehaviour
     GridManager gridManager;
     
 
-    private float snapMoveX;
-    private float snapMoveY;
+    /*private float snapMoveX;
+    private float snapMoveY;*/
 
 
     private void Awake()
@@ -57,9 +57,10 @@ public class CoordinateLabel : MonoBehaviour
     }
     public void DisplayCoordinates() //show coordinates of tile
     {
+        if (gridManager == null) { return; }
         #if UNITY_EDITOR
-        snapMoveX = UnityEditor.EditorSnapSettings.move.x; //var for dividing x grid position
-        snapMoveY = UnityEditor.EditorSnapSettings.move.z; //var for dividing z grid position
+        //snapMoveX = gridManager.UnityGridSize; //var for dividing x grid position
+        //snapMoveY = grid; //var for dividing z grid position
         //Debug.Log((snapMoveX, snapMoveY));
         #else
         snapMoveX = 1f;
@@ -67,8 +68,8 @@ public class CoordinateLabel : MonoBehaviour
         #endif
 
         label.enabled = true;
-        coordinates.x = (int)(transform.parent.position.x / snapMoveX);
-        coordinates.y = (int)(transform.parent.position.z / snapMoveY);
+        coordinates.x = (int)(transform.parent.position.x / gridManager.UnityGridSize);
+        coordinates.y = (int)(transform.parent.position.z / gridManager.UnityGridSize);
         label.text = ($"{coordinates.x}, {coordinates.y}"); //label name for example = "1,1";
     }
 
@@ -87,10 +88,9 @@ public class CoordinateLabel : MonoBehaviour
         {
             label.color = blockedColor;
         }
-        if (node.isPath)
+        else if (node.isPath)
         {
             label.color = pathColor;
-            Debug.Log("orange");
         }
         else if (node.isExplored)
         {

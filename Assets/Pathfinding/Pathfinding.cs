@@ -6,21 +6,21 @@ public class Pathfinding : MonoBehaviour
 {
     [SerializeField] Vector2Int startCoords;
     [SerializeField] Vector2Int endCoords;
-    Vector2Int[] directions = {Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down};
-
+    
     Node startNode;
     Node endNode;
     Node currentSearchNode;
 
     Queue<Node> frontier = new Queue<Node>(); //границы которые нужно исследовать 
     Dictionary<Vector2Int, Node> reached = new Dictionary<Vector2Int, Node>(); //словарь чтобы узнать исследован ли был узел 
-    
+
+    Vector2Int[] directions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
 
     GridManager gridManager;
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
 
     // Start is called before the first frame update
-    private void Awake()
+    /*private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
         if (gridManager != null)
@@ -29,15 +29,22 @@ public class Pathfinding : MonoBehaviour
         }
 
         
-    }
+    }*/
 
     void Start()
     {
-        startNode = gridManager.Grid[startCoords];
-        endNode = gridManager.Grid[endCoords];
+        gridManager = FindObjectOfType<GridManager>();
+        if (gridManager != null)
+        {
+            grid = gridManager.Grid;
+            startNode = grid[startCoords];
+            endNode = grid[endCoords];
+            
+            StartCoroutine(BreadthFirstSearch());
+        }
+        
 
-        StartCoroutine(BreadthFirstSearch());
-        BuildPath();
+        
         //BreadthFirstSearch();
     }
 
@@ -52,7 +59,7 @@ public class Pathfinding : MonoBehaviour
             {
                 
                 neighbors.Add(grid[neighborCoordinates]); // добавить на сетку координаты соседей
-                grid[startCoords].isExplored = true; //перекрасить нулевую координату
+                //grid[startCoords].isExplored = true; //перекрасить нулевую координату
                 //grid[currentSearchNode.coordinates].isPath = true;
             }
         }
@@ -78,14 +85,16 @@ public class Pathfinding : MonoBehaviour
         {
             currentSearchNode = frontier.Dequeue(); //убрать текущий узел из очереди и пометить текущий узел первым в очереди
             currentSearchNode.isExplored = true; //пометить текущий узел как пройденный
+            
             ExploreNeighbours();
             if (currentSearchNode.coordinates == endCoords) // если координаты текущего узла равно конечного узлу
             {
                 isRunning = false;
             }
             Debug.Log(currentSearchNode.coordinates);
-            yield return new WaitForSeconds(0.2f);
+            yield return null;
         }
+        BuildPath();
     }
 
     List<Node> BuildPath()

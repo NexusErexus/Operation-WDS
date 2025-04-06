@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Waypoint : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     [SerializeField] bool isRoadPlaceable; // road path check (false)
     [SerializeField] bool isTilePlaceable; //check for placing turret
@@ -11,6 +11,26 @@ public class Waypoint : MonoBehaviour
     
     private GameObject turretObject;
     
+    GridManager gridManager;
+    Vector2Int coordinates = new Vector2Int();
+
+    private void Awake()
+    {
+        gridManager = FindObjectOfType<GridManager>();
+    }
+
+    private void Start()
+    {
+        if (gridManager != null)
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+
+            if (!isTilePlaceable)
+            {
+                gridManager.BlockNode(coordinates);
+            }
+        }
+    }
 
     private void OnEnable()
     {
