@@ -12,11 +12,13 @@ public class Tile : MonoBehaviour
     private GameObject turretObject;
     
     GridManager gridManager;
+    Pathfinding pathfinding;
     Vector2Int coordinates = new Vector2Int();
 
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
+        pathfinding = FindObjectOfType<Pathfinding>();
     }
 
     private void Start()
@@ -52,12 +54,15 @@ public class Tile : MonoBehaviour
         RaycastHit hit; //var for reading value from the ray
         if (Physics.Raycast(ray, out hit)) //checking raycast (collider required)
         {
-            if (hit.transform == transform && isTilePlaceable) //ray coordinates equals tile coordinates
+            //if (hit.transform == transform && isTilePlaceable) //ray coordinates equals tile coordinates
+            if (hit.transform == transform && gridManager.GetNode(coordinates).isWalkable && !pathfinding.WillBlockPath(coordinates)) //ray coordinates equals tile coordinates
             {
                 Vector3 correctPosition = transform.position + new Vector3(0, 0.25f, 0); //create position for instantiating turret
                 //turretObject = Instantiate(turretPrefab, correctPosition, Quaternion.identity); //spawn the turret
                 bool isPlaced = turretPrefab.CreateTower(turretPrefab, correctPosition);
                 isTilePlaceable = !isPlaced;
+                gridManager.BlockNode(coordinates);
+                Debug.Log("fafd");
             }
             /*else if (hit.transform == transform && !isTilePlaceable && !isNotPathPlaceable) //destroy the object when tile is busy by another turret
             {

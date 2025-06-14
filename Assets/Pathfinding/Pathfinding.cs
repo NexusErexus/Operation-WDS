@@ -39,13 +39,17 @@ public class Pathfinding : MonoBehaviour
             grid = gridManager.Grid;
             startNode = grid[startCoords];
             endNode = grid[endCoords];
-            
-            StartCoroutine(BreadthFirstSearch());
         }
-        
-
-        
+        GetNewPath();
         //BreadthFirstSearch();
+    }
+
+    public List<Node> GetNewPath()
+    {
+        gridManager.ResetNodes();
+        //StartCoroutine(BreadthFirstSearch());
+        BreadthFirstSearch();
+        return BuildPath();
     }
 
     void ExploreNeighbours()
@@ -75,8 +79,11 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    IEnumerator BreadthFirstSearch() //алгоритм поиска пути
+    //IEnumerator BreadthFirstSearch() //алгоритм поиска пути
+    private void BreadthFirstSearch() //алгоритм поиска пути
     {
+        frontier.Clear();
+        reached.Clear();
         bool isRunning = true;
         frontier.Enqueue(startNode); //добавить начальный узел в конец очереди
         reached.Add(startCoords, startNode); //добавить координаты и начальный узел в список исследованных узлов
@@ -92,9 +99,9 @@ public class Pathfinding : MonoBehaviour
                 isRunning = false;
             }
             Debug.Log(currentSearchNode.coordinates);
-            yield return null;
+            //yield return null;
         }
-        BuildPath();
+        //BuildPath();
     }
 
     List<Node> BuildPath()
@@ -113,5 +120,23 @@ public class Pathfinding : MonoBehaviour
         }
         path.Reverse();
         return path;
+    }
+
+    public bool WillBlockPath(Vector2Int coords)
+    {
+        if (grid.ContainsKey(coords))
+        {
+            bool beforeState = grid[coords].isWalkable;
+            grid[coords].isWalkable = false;
+            List<Node> newPath = GetNewPath();
+            grid[coords].isWalkable = beforeState;
+
+            if (newPath.Count <= 1)
+            {
+                GetNewPath();
+                return true;
+            }
+        }
+        return false;
     }
 }
